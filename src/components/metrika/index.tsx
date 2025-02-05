@@ -33,7 +33,11 @@ const MetrikaSuspense: React.FC = () => {
     window?.ym?.(YM_COUNTER_NUMBER, "hit", window.location.href);
   }, [pathname, searchParams]);
 
-  return <Script id="yandex-metrika">{scriptBody}</Script>;
+  return (
+    <Script strategy="beforeInteractive" id="yandex-metrika">
+      {scriptBody}
+    </Script>
+  );
 };
 
 // **
