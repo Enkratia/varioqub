@@ -6,6 +6,8 @@ import { Varioqub } from "../components/varioqub";
 const YM_COUNTER_NUMBER = 97936289;
 const YM_PAGE_URL = "https://varioqub.vercel.app/";
 
+type VarioqubFlagType = { v: string; t: string; n: string };
+
 export default async function Home() {
   const i = (await cookies()).get("_ymab_param")?.value || "";
 
@@ -25,7 +27,9 @@ export default async function Home() {
         className={s.div}
         style={{
           background:
-            data.flags.find((o: any) => o.n === "accumulate_points_vi")?.v === "b" ? "red" : "",
+            data.flags.find((o: VarioqubFlagType) => o.n === "accumulate_points_vi")?.v === "b"
+              ? "red"
+              : "",
         }}></div>
       <Varioqub _ymab_param={data.i} experiments={data.experiments} />
     </>

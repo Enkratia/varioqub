@@ -29,7 +29,7 @@ const MetrikaSuspense: React.FC = () => {
   const searchParams = useSearchParams();
 
   React.useEffect(() => {
-    // @ts-ignore TODO: протипизировать яндекс метрику позже
+    // @ts-expect-error TODO: протипизировать яндекс метрику позже
     window?.ym?.(YM_COUNTER_NUMBER, "hit", window.location.href);
   }, [pathname, searchParams]);
 
