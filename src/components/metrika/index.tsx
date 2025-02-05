@@ -19,7 +19,8 @@ const scriptBody = `
       trackLinks:true,
       accurateTrackBounce:true,
       webvisor:true,
-      trackHash:true
+      trackHash:true,
+      triggerEvent: true
   }); 
   `;
 
@@ -31,16 +32,9 @@ const MetrikaSuspense: React.FC = () => {
   React.useEffect(() => {
     // @ts-expect-error TODO: протипизировать яндекс метрику позже
     window.ym(YM_COUNTER_NUMBER, "hit", window.location.href);
-
-    // @ts-expect-error TODO: протипизировать яндекс метрику позже
-    console.log("window?.ym", window?.ym);
   }, [pathname, searchParams]);
 
-  return (
-    <Script strategy="beforeInteractive" id="yandex-metrika">
-      {scriptBody}
-    </Script>
-  );
+  return <Script id="yandex-metrika">{scriptBody}</Script>;
 };
 
 // **
