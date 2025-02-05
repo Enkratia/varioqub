@@ -20,7 +20,8 @@ export const Varioqub: React.FC<VarioqubProps> = ({ experiments, _ymab_param }) 
       setVarioqubCookieClient(_ymab_param);
 
       // @ts-expect-error TODO: протипизировать яндекс метрику позже
-      window?.ym?.(YM_COUNTER_NUMBER, "experiments", experiments);
+      // window?.ym?.(YM_COUNTER_NUMBER, "experiments", experiments);
+      window.ym(YM_COUNTER_NUMBER, "experiments", experiments);
 
       // @ts-expect-error TODO: протипизировать яндекс метрику позже
       console.log("window?.ym 2", window?.ym);
