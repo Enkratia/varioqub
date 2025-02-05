@@ -13,6 +13,11 @@ export default async function Home() {
 
   const res = await fetch(
     `https://uaas.yandex.ru/v1/exps/?client_id=metrika.${YM_COUNTER_NUMBER}&url=${YM_PAGE_URL}&i=${i}&client_features=`,
+    {
+      next: {
+        revalidate: 0,
+      },
+    },
   );
 
   const data = await res.json();
