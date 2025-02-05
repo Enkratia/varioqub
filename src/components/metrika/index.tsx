@@ -31,6 +31,9 @@ const MetrikaSuspense: React.FC = () => {
   React.useEffect(() => {
     // @ts-expect-error TODO: протипизировать яндекс метрику позже
     window?.ym?.(YM_COUNTER_NUMBER, "hit", window.location.href);
+
+    // @ts-expect-error TODO: протипизировать яндекс метрику позже
+    console.log("window?.ym", window?.ym);
   }, [pathname, searchParams]);
 
   return (
