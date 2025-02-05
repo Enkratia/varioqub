@@ -24,7 +24,7 @@ export const Varioqub: React.FC<VarioqubProps> = ({ experiments, _ymab_param }) 
       if (window?.ym) {
         console.log("a");
       } else {
-        document.documentElement.addEventListener(`yacounter${YM_COUNTER_NUMBER}inited`, () =>
+        document.addEventListener(`yacounter${YM_COUNTER_NUMBER}inited`, () =>
           console.log("hello"),
         );
       }

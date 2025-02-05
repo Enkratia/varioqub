@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 
-import s from "./page.module.css";
+// import s from "./page.module.css";
 import { Varioqub } from "../components/varioqub";
 
 const YM_COUNTER_NUMBER = 97936289;
