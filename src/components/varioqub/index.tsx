@@ -13,20 +13,27 @@ type VarioqubProps = {
 };
 
 export const Varioqub: React.FC<VarioqubProps> = ({ experiments, _ymab_param }) => {
-  React.useEffect(() => {
+  React.useLayoutEffect(() => {
     if (experiments && _ymab_param) {
       setVarioqubCookieClient(_ymab_param);
 
-      // @ts-expect-error TODO: протипизировать яндекс метрику позже
-      window?.ym?.(YM_COUNTER_NUMBER, "experiments", experiments);
+      // **
+      const initVarioqub = () => {
+        // @ts-expect-error TODO: протипизировать яндекс метрику позже
+        window?.ym?.(YM_COUNTER_NUMBER, "experiments", experiments);
 
+        document.removeEventListener(`yacounter${YM_COUNTER_NUMBER}inited`, initVarioqub);
+        console.log("1");
+      };
+
+      // **
+      document.addEventListener(`yacounter${YM_COUNTER_NUMBER}inited`, initVarioqub);
+
+      // **
       // @ts-expect-error TODO: протипизировать яндекс метрику позже
       if (window?.ym) {
-        console.log("a");
-      } else {
-        document.addEventListener(`yacounter${YM_COUNTER_NUMBER}inited`, () =>
-          console.log("hello"),
-        );
+        initVarioqub();
+        console.log("2");
       }
     }
   }, [experiments, _ymab_param]);
